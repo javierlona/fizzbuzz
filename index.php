@@ -1,3 +1,4 @@
+<?php include "fizz-buzz-process.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +21,7 @@
     <div class="row">
       <div class="col-lg-12">
         <div class="well bs-component">
-          <form action="" class="form-horizontal" method="get">
+          <form action="" class="form-horizontal" method="GET" action="<?php echo $_SERVER['PHP_SELF'] ?>">
             <fieldset>
               <legend>FizzBuzz</legend>
               <div class="form-group">
