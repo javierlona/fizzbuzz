@@ -21,19 +21,19 @@
     <div class="row">
       <div class="col-lg-12">
         <div class="well bs-component">
-          <form action="" class="form-horizontal" method="GET" action="<?php echo $_SERVER['PHP_SELF'] ?>">
+          <form action="<?php echo $_SERVER['PHP_SELF'] ?>" class="form-horizontal" method="GET">
             <fieldset>
               <legend>FizzBuzz</legend>
               <div class="form-group">
                 <label class="col-lg-2 control-label" for="print-from">From</label>
                 <div class="col-lg-4">
-                  <input class="form-control" id="print-from" placeholder="Print From" type="text">
+                  <input class="form-control" name="print-from" id="print-from" placeholder="Print From" type="text">
                 </div>
               </div>
               <div class="form-group">
                 <label class="col-lg-2 control-label" for="print-to">To</label>
                 <div class="col-lg-4">
-                  <input class="form-control" id="print-to" placeholder="Print To" type="text">
+                  <input class="form-control" name="print-to" id="print-to" placeholder="Print To" type="text">
                 </div>
               </div>
               <div class="form-group">
