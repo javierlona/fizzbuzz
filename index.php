@@ -80,7 +80,9 @@
                   // Asssign i to the sanitized range entered by user
                   for($i = $printFrom; $i <= $printTo; $i++) {
                     echo "<tr>";
-                    if(($i % 3 == 0) & ($i % 5 == 0)) {
+                    if(($i % 3 == 0) & ($i % 5 == 0) & ($i % 10 == 0)) {
+                      echo "<td class='success'>FizzBuzz</td>";
+                    } elseif(($i % 3 == 0) & ($i % 5 == 0)) {
                       echo "<td>FizzBuzz</td>";
                     } elseif($i % 3 == 0) {
                       echo "<td>Fizz</td>";

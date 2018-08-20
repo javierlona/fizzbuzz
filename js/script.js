@@ -1,5 +1,6 @@
-// The load event is fired when a resource and its dependent resources have finished loading
-document.addEventListener('load', get_table_row_count, false);
+// The event is fired when the initial HTML document has been completely 
+// loaded and parsed, without waiting for stylesheets, images, and subframes to finish loading
+document.addEventListener('DOMContentLoaded', get_table_row_count, false);
 
 function get_table_row_count(){
   // Get the row count begining at the table body
@@ -14,4 +15,5 @@ function get_table_row_count(){
   newPanel.append(ROW_COUNT);
   // Add the text content to the parent element
   PARENT_TBODY.append(newPanel);
+  
 }

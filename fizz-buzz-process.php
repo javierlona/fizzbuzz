@@ -4,7 +4,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
   /* Make sure the variable exists, if it does not set it to null
   *  If the variable exists, strip html & php tags from the value
-  *  Assign variable to "raw" variable b/c it has to validated further
+  *  Assign variable to "raw" variable b/c it has to be validated further
   */
   $rawFrom = isset($_GET['print-from']) ? strip_tags($_GET['print-from']) : null;
   $rawTo = isset($_GET['print-to']) ? strip_tags($_GET['print-to']) : null;
@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   /* Validate value is a number
    * submitted values are strings, so use is_numeric instead of is_int
    * options: max, min
-   * has_number($items_to_order, ['min' => 1, 'max' => 5])
+   * has_number($number, ['min' => 1, 'max' => 5])
    */
   function has_number($value, $options=[]) {
     if(!is_numeric($value)) {
