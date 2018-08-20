@@ -2,9 +2,9 @@
 // Make sure the method we get back from the server is set to GET
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
-  /* Make sure the variable exists, if it does not set it to null.
-  *  If the variable exists, strip html & php tags from the value.
-  *  Assign variable to "raw" variable b/c it has to validated further.
+  /* Make sure the variable exists, if it does not set it to null
+  *  If the variable exists, strip html & php tags from the value
+  *  Assign variable to "raw" variable b/c it has to validated further
   */
   $rawFrom = isset($_GET['print-from']) ? strip_tags($_GET['print-from']) : null;
   $rawTo = isset($_GET['print-to']) ? strip_tags($_GET['print-to']) : null;
@@ -13,10 +13,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   $min = -9999;
   $max = 9999;
 
-  // Forms error variable. Do not create table unless our data is error free.
+  // Forms error variable. Do not create table unless our data is error free
   $formErrors = false;
   
-  // Initialize message that displays the valid range.
+  // Initialize message that displays the valid range
   $msg = "";
   
   /* Validate value is a number

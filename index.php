@@ -57,6 +57,7 @@
         </div>
       </div>
     </div>
+  </div>
     <!-- TABLE ========================================== -->
     <div class="row">
       <div class="col-lg-12">
@@ -72,27 +73,28 @@
             </thead>
             <tbody id="tbody">
               <?php
-                /* The first "null" case handles situations
-                 * when invalid data is entered.
-                 */
-                for($i = $printFrom; $i <= $printTo; $i++) {
-                  echo "<tr>";
-                  if($i == null) {
-                    echo "<td>Data will be displayed here.</td>";
-                  } elseif(($i % 3 == 0) & ($i % 5 == 0)) {
-                    echo "<td>FizzBuzz</td>";
-                  } elseif($i % 3 == 0) {
-                    echo "<td>Fizz</td>";
-                  } elseif(($i % 5 == 0) & ($i % 10 == 0)) {
-                    echo "<td class='success'>Buzz</td>";
-                  } elseif($i % 5 == 0) {
-                    echo "<td>Buzz</td>";
-                  } else {
-                    echo "<td>$i</td>";
-                  }
-                  // Closing tag for each table row
-                  echo "</tr>";
-                }
+                // Display default message when no range is entered
+                if(($printFrom === null) || ($printTo === null)) {
+                  echo "<p class='text-muted'>Data will be displayed below.</p>";
+                } else {
+                  // Asssign i to the sanitized range entered by user
+                  for($i = $printFrom; $i <= $printTo; $i++) {
+                    echo "<tr>";
+                    if(($i % 3 == 0) & ($i % 5 == 0)) {
+                      echo "<td>FizzBuzz</td>";
+                    } elseif($i % 3 == 0) {
+                      echo "<td>Fizz</td>";
+                    } elseif(($i % 5 == 0) & ($i % 10 == 0)) {
+                      echo "<td class='success'>Buzz</td>";
+                    } elseif($i % 5 == 0) {
+                      echo "<td>Buzz</td>";
+                    } else {
+                      echo "<td>$i</td>";
+                    }
+                    // Closing tag for each table row
+                    echo "</tr>";
+                  } // closing for loop tag
+              } // closing else tag
               ?>
             </tbody>
           </table>
