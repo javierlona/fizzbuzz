@@ -1,19 +1,23 @@
 <?php
-
+// Make sure the method we get back from the server is set to GET
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
   $rawFrom = isset($_GET['print-from']) ? strip_tags($_GET['print-from']) : null;
   $rawTo = isset($_GET['print-to']) ? strip_tags($_GET['print-to']) : null;
+  // The min and max range values
   $min = -9999;
   $max = 9999;
 
+  // Forms error variable. Do not create table unless our data is error free.
   $formErrors = false;
+  // Initialize message that displays the valid range.
   $msg = "";
   
-  // * validate value is a number
-  // submitted values are strings, so use is_numeric instead of is_int
-  // options: max, min
-  // has_number($items_to_order, ['min' => 1, 'max' => 5])
+  /* validate value is a number
+   * submitted values are strings, so use is_numeric instead of is_int
+   * options: max, min
+   * has_number($items_to_order, ['min' => 1, 'max' => 5])
+   */
   function has_number($value, $options=[]) {
     if(!is_numeric($value)) {
       return false;
@@ -27,21 +31,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     return true;
   }
 
-  if(!($cleanFrom = has_number($rawFrom, ['min' => $min, 'max' => $max]))) {
+  // Check that our value is numeric and within designated range
+  if(!(has_number($rawFrom, ['min' => $min, 'max' => $max]))) {
     $formErrors = true;
-  } 
-  if(!($cleanTo = has_number($rawTo, ['min' => $min, 'max' => $max]))) {
-    $formErrors = true;
-  } 
+  }
 
+  // Check that our value is numeric and within designated range
+  if(!(has_number($rawTo, ['min' => $min, 'max' => $max]))) {
+    $formErrors = true;
+  }
+
+  // Check that our begining value is smaller than our ending value
+  if($rawFrom > $rawTo) {
+    $formErrors = true;
+  }
 
   if(!($formErrors)) {
-    // The value range is valid
+    // The value range is valid, reassign values to verified variables
     $printFrom = $rawFrom;
     $printTo = $rawTo;
   } else {
-    // The value range is invalid
-    $msg = "Please enter a range from $min to $max";
+    // The value range is invalid, reassign variables to null
+    $msg = "<p class='text-muted'>Please enter a valid range from $min to $max</p>";
     $printFrom = null;
     $printTo = null;
   }
