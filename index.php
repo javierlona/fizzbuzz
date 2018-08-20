@@ -1,55 +1,4 @@
-<?php //include "fizz-buzz-process.php"; 
-if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-
-  $rawFrom = isset($_GET['print-from']) ? strip_tags($_GET['print-from']) : 0;
-  $rawTo = isset($_GET['print-to']) ? strip_tags($_GET['print-to']) : 0;
-  $min = -9999;
-  $max = 9999;
-
-  $formErrors = false;
-  $msg = "";
-  
-  // * validate value is a number
-  // submitted values are strings, so use is_numeric instead of is_int
-  // options: max, min
-  // has_number($items_to_order, ['min' => 1, 'max' => 5])
-  function has_number($value, $options=[]) {
-    if(!is_numeric($value)) {
-      return false;
-    }
-    if(isset($options['max']) && ($value > (int)$options['max'])) {
-      return false;
-    }
-    if(isset($options['min']) && ($value < (int)$options['min'])) {
-      return false;
-    }
-    return true;
-  }
-
-  if(!($cleanFrom = has_number($rawFrom, ['min' => $min, 'max' => $max]))) {
-    $formErrors = true;
-  } 
-  if(!($cleanTo = has_number($rawTo, ['min' => $min, 'max' => $max]))) {
-    $formErrors = true;
-  } 
-
-
-  if(!($formErrors)) {
-    // The value range is valid
-    $printFrom = $rawFrom;
-    $printTo = $rawTo;
-  } else {
-    // The value range is invalid
-    $msg = "Invalid Data Range";
-    $printFrom = 0;
-    $printTo = 0;
-  }
-
-}
-
-    
-  
-?>
+<?php include "fizz-buzz-process.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -117,7 +66,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 <?php
                   for($i = $printFrom; $i <= $printTo; $i++) {
                     echo "<tr>";
-                    if(($i % 3 == 0) & ($i % 5 == 0)) {
+                    if($i == null) {
+                      echo "";
+                    }
+                    elseif(($i % 3 == 0) & ($i % 5 == 0)) {
                       echo "<td>FizzBuzz</td>";
                     } elseif($i % 3 == 0) {
                       echo "<td>Fizz</td>";
