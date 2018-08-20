@@ -1,4 +1,55 @@
-<?php include "fizz-buzz-process.php"; ?>
+<?php //include "fizz-buzz-process.php"; 
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+
+  $rawFrom = isset($_GET['print-from']) ? strip_tags($_GET['print-from']) : 0;
+  $rawTo = isset($_GET['print-to']) ? strip_tags($_GET['print-to']) : 0;
+  $min = -9999;
+  $max = 9999;
+
+  $formErrors = false;
+  $msg = "";
+  
+  // * validate value is a number
+  // submitted values are strings, so use is_numeric instead of is_int
+  // options: max, min
+  // has_number($items_to_order, ['min' => 1, 'max' => 5])
+  function has_number($value, $options=[]) {
+    if(!is_numeric($value)) {
+      return false;
+    }
+    if(isset($options['max']) && ($value > (int)$options['max'])) {
+      return false;
+    }
+    if(isset($options['min']) && ($value < (int)$options['min'])) {
+      return false;
+    }
+    return true;
+  }
+
+  if(!($cleanFrom = has_number($rawFrom, ['min' => $min, 'max' => $max]))) {
+    $formErrors = true;
+  } 
+  if(!($cleanTo = has_number($rawTo, ['min' => $min, 'max' => $max]))) {
+    $formErrors = true;
+  } 
+
+
+  if(!($formErrors)) {
+    // The value range is valid
+    $printFrom = $rawFrom;
+    $printTo = $rawTo;
+  } else {
+    // The value range is invalid
+    $msg = "Invalid Data Range";
+    $printFrom = 0;
+    $printTo = 0;
+  }
+
+}
+
+    
+  
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,6 +74,7 @@
         <div class="well bs-component">
           <form action="<?php echo $_SERVER['PHP_SELF'] ?>" class="form-horizontal" method="GET">
             <fieldset>
+              <?php echo isset($msg) ? $msg : ''; ?>
               <legend>FizzBuzz</legend>
               <div class="form-group">
                 <label class="col-lg-2 control-label" for="print-from">From</label>
@@ -52,7 +104,7 @@
       <div class="row">
         <div class="col-lg-12">
           <div class="page-header">
-            <h3 id="tables">Printing from FROM to TO</h3>
+            <h3 id="tables">Printing from <?php echo $printFrom; ?> to <?php echo $printTo; ?></h3>
           </div>
           <div class="bs-component">
             <table class="table table-striped table-hover">
@@ -61,28 +113,24 @@
                   <th>Number</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                </tr>
-                <tr class="info">
-                  <td>3</td>
-                </tr>
-                <tr class="success">
-                  <td>4</td>
-                </tr>
-                <tr class="danger">
-                  <td>5</td>
-                </tr>
-                <tr class="warning">
-                  <td>6</td>
-                </tr>
-                <tr class="active">
-                  <td>7</td>
-                </tr>
+              <tbody id="tbody">
+                <?php
+                  for($i = $printFrom; $i <= $printTo; $i++) {
+                    echo "<tr>";
+                    if(($i % 3 == 0) & ($i % 5 == 0)) {
+                      echo "<td>FizzBuzz</td>";
+                    } elseif($i % 3 == 0) {
+                      echo "<td>Fizz</td>";
+                    } elseif(($i % 5 == 0) & ($i % 10 == 0)) {
+                      echo "<td class='success'>Buzz</td>";
+                    } elseif($i % 5 == 0) {
+                      echo "<td>Buzz</td>";
+                    } else {
+                      echo "<td>$i</td>";
+                    }
+                    echo "</tr>";
+                  }
+                ?>
               </tbody>
             </table>
           </div>
@@ -90,5 +138,6 @@
       </div>
     </div>
   </div><!-- /.container -->
+  <!-- <script src="js/script.js"></script> -->
 </body>
 </html>
