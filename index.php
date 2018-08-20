@@ -1,4 +1,4 @@
-<?php include "fizz-buzz-process.php"; ?>
+<?php include "php/fizz-buzz-process.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,13 +29,13 @@
               <div class="form-group">
                 <label class="col-lg-2 control-label" for="print-from">From</label>
                 <div class="col-lg-4">
-                  <input class="form-control" name="print-from" id="print-from" placeholder="Print From" type="text">
+                  <input class="form-control" name="print-from" placeholder="Print From" type="text">
                 </div>
               </div>
               <div class="form-group">
                 <label class="col-lg-2 control-label" for="print-to">To</label>
                 <div class="col-lg-4">
-                  <input class="form-control" name="print-to" id="print-to" placeholder="Print To" type="text">
+                  <input class="form-control" name="print-to" placeholder="Print To" type="text">
                 </div>
               </div>
               <div class="form-group">
@@ -48,6 +48,7 @@
           </form>
         </div>
       </div>
+      <!-- ROW COUNT OUTPUT ========================================== -->
       <div class="col-lg-4">
         <div class="bs-component">
           <div class="panel panel-primary">
@@ -62,7 +63,7 @@
     <div class="row">
       <div class="col-lg-12">
         <div class="page-header">
-          <h3 id="tables">Printing from <?php echo $printFrom; ?> to <?php echo $printTo; ?></h3>
+          <h3>Printing from <?php echo $printFrom; ?> to <?php echo $printTo; ?></h3>
         </div>
         <div class="bs-component">
           <table class="table table-striped table-hover">
@@ -71,7 +72,7 @@
                 <th>Number</th>
               </tr>
             </thead>
-            <tbody id="tbody">
+            <tbody>
               <?php
                 // Display default message when no range is entered
                 if(($printFrom === null) || ($printTo === null)) {

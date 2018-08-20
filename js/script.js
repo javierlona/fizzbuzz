@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', get_table_row_count, false);
 
 function get_table_row_count(){
   // Get the row count begining at the table body
-  const ROW_COUNT = document.querySelector("#tbody").rows.length;
+  const ROW_COUNT = document.querySelector("tbody").rows.length;
   // Create new div element where the row count number will be place
   newPanel = document.createElement("div");
   // Add the class to the div element
