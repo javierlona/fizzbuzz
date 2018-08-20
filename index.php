@@ -20,7 +20,7 @@
     </div>
     <!-- FORM ========================================== -->
     <div class="row">
-      <div class="col-lg-12">
+      <div class="col-lg-8">
         <div class="well bs-component">
           <form action="<?php echo $_SERVER['PHP_SELF'] ?>" class="form-horizontal" method="GET">
             <fieldset>
@@ -39,13 +39,24 @@
                 </div>
               </div>
               <div class="form-group">
-                <div class="col-lg-10 col-lg-offset-2">
+                <div class="col-lg-8 col-lg-offset-2">
                   <button class="btn btn-default" type="reset">Clear</button> <button class=
-                  "btn btn-primary" type="submit" name="action" value="submit">Submit</button>
+                  "btn btn-primary" type="submit">Submit</button>
                 </div>
               </div>
             </fieldset>
           </form>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="bs-component">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title">Number of Rows</h3>
+            </div>
+            <div class="panel-body">
+              Panel content
+            </div>
         </div>
       </div>
     </div>
@@ -64,10 +75,13 @@
             </thead>
             <tbody id="tbody">
               <?php
+                /* The first "null" case handles situations
+                 * when invalid data is entered.
+                 */
                 for($i = $printFrom; $i <= $printTo; $i++) {
                   echo "<tr>";
                   if($i == null) {
-                    echo "";
+                    echo "<td>Data will be displayed here.</td>";
                   } elseif(($i % 3 == 0) & ($i % 5 == 0)) {
                     echo "<td>FizzBuzz</td>";
                   } elseif($i % 3 == 0) {
@@ -79,7 +93,7 @@
                   } else {
                     echo "<td>$i</td>";
                   }
-                  // Closing tag for table row
+                  // Closing tag for each table row
                   echo "</tr>";
                 }
               ?>
@@ -89,6 +103,8 @@
       </div>
     </div>
   </div><!-- /.container -->
-  <!-- <script src="js/script.js"></script> -->
+  <script src="js/script.js"></script>
+      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+      <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
 </body>
 </html>
