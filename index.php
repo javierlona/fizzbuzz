@@ -54,9 +54,6 @@
             <div class="panel-heading">
               <h3 class="panel-title">Number of Rows</h3>
             </div>
-            <div class="panel-body">
-              Panel content
-            </div>
         </div>
       </div>
     </div>
