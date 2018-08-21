@@ -24,7 +24,7 @@
         <div class="well bs-component">
           <form action="<?php echo $_SERVER['PHP_SELF'] ?>" class="form-horizontal" method="GET">
             <fieldset>
-              <?php echo isset($msg) ? $msg : ''; ?>
+              <?php echo isset($msg) ? $msg : ""; ?>
               <legend>FizzBuzz</legend>
               <div class="form-group">
                 <label class="col-lg-2 control-label" for="print-from">From</label>
