@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="ie=edge" http-equiv="X-UA-Compatible">
-  <link href="https://bootswatch.com/3/yeti/bootstrap.css" rel="stylesheet">
+  <link href="https://bootswatch.com/3/flatly/bootstrap.css" rel="stylesheet">
   <title>Level5 Assessment</title>
 </head>
 <body>

@@ -63,6 +63,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $printTo = null;
   }
 
-}
+} // Closing tag for checking the request method is a GET request
 
 ?>
