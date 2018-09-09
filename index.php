@@ -78,24 +78,28 @@
                 } else {
                   // Asssign i to the sanitized range entered by user
                   for($i = $printFrom; $i <= $printTo; $i++) {
+                    // Opening tag for each table row
                     echo "<tr>";
-                    if(($i % 3 == 0) & ($i % 5 == 0) & ($i % 10 == 0)) {
-                      echo "<td class='success'>FizzBuzz</td>";
-                    } elseif(($i % 3 == 0) & ($i % 5 == 0)) {
-                      echo "<td>FizzBuzz</td>";
-                    } elseif($i % 3 == 0) {
-                      echo "<td>Fizz</td>";
-                    } elseif(($i % 5 == 0) & ($i % 10 == 0)) {
-                      echo "<td class='success'>Buzz</td>";
-                    } elseif($i % 5 == 0) {
-                      echo "<td>Buzz</td>";
+                    // Determine if column needs to be highlighted
+                    if($i % 10 == 0) {
+                      echo "<td class='success'>";
                     } else {
-                      echo "<td>$i</td>";
+                      echo "<td>";
+                    }
+                    // Determine the output for each row
+                    if(($i % 3 == 0) & ($i % 5 == 0)){
+                      echo "FizzBuzz";
+                    } elseif($i % 5 == 0) {
+                      echo "Buzz";
+                    } elseif($i % 3 == 0) {
+                      echo "Fizz";
+                    } else {
+                      echo "$i";
                     }
                     // Closing tag for each table row
-                    echo "</tr>";
-                  } // closing for loop tag
-              } // closing else tag
+                    echo "</td></tr>";
+                  } // Closing for loop tag
+              } // Closing else tag
               ?>
             </tbody>
           </table>
