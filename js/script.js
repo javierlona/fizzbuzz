@@ -1,6 +1,6 @@
 // The event is fired when the initial HTML document has been completely 
 // loaded and parsed, without waiting for stylesheets, images, and subframes to finish loading
-document.addEventListener('DOMContentLoaded', get_table_row_count, false);
+document.addEventListener("DOMContentLoaded", get_table_row_count, false);
 
 function get_table_row_count(){
   // Get the row count begining at the table body
