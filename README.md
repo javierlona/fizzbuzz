@@ -2,7 +2,7 @@
 ![Demo Image](imgs/fizzbuzz-demo.jpg)
 
 ## Live Demo
-[Click for a Live App Demo](http://apps.javierlona.com/fizzbuzz/)
+[Click for a Live Demo](http://apps.javierlona.com/fizzbuzz/)
 ## Description
 The program generates a table of values from a specified range given by the user. It outputs specific text instead of the value if it is a multiple.
 
